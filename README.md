@@ -19,6 +19,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 # Listado de participantes
 
 
+- Ezequiel Venuti / eZeKiel9222
 - Federico Ali Barroso, BFedeAli
 - Daniel Guzman, dguzman-ort
 - Martin Soengas, martinsoengas
