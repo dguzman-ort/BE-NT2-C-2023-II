@@ -18,5 +18,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 
 # Listado de participantes
 
+
+- Federico Ali Barroso, BFedeAli
 - Daniel Guzman, dguzman-ort
 - Martin Soengas, martinsoengas
