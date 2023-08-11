@@ -18,4 +18,13 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 
 # Listado de participantes
 
+<<<<<<< HEAD
 - Matias Aratano, matiasaratano
+=======
+- Ezequiel Venuti / eZeKiel9222
+- Federico Ali Barroso, BFedeAli
+- Daniel Guzman, dguzman-ort
+- Martin Soengas, martinsoengas
+- Mateo Chancalay, mchancalay
+- Mauricio La Rotonda, mlarotonda
+>>>>>>> 6dd7543474ad9fd874199deb3bb56edf029d0b6a
