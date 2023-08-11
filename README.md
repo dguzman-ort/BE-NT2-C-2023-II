@@ -24,4 +24,5 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Martin Soengas, martinsoengas
 - Mateo Chancalay, mchancalay
 - Mauricio La Rotonda, mlarotonda
+- Guillermo Germán Speicher Mujica Clemens, ggspeicher
 - Nicolas Lell, NicolasLell
