@@ -17,8 +17,10 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Hacer un Pull request de sus respositorios (hechos mediante el fork) a la rama `master` del repositorio de la clase.
 
 # Listado de participantes
+
 - Nicolas Lell, NicolasLell
+- Ezequiel Venuti / eZeKiel9222
 - Federico Ali Barroso, BFedeAli
 - Daniel Guzman, dguzman-ort
 - Martin Soengas, martinsoengas
-
+- Mateo Chancalay, mchancalay
