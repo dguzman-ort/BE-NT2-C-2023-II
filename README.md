@@ -25,3 +25,4 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Mateo Chancalay, mchancalay
 - Mauricio La Rotonda, mlarotonda
 - Nicolas Lell, NicolasLell
+- Felipe Bianco @fbianco32
