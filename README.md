@@ -23,6 +23,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Daniel Guzman, dguzman-ort
 - Martin Soengas, martinsoengas
 - Mateo Chancalay, mchancalay
+- Romina Diaz, rominaADiaz
 - Mauricio La Rotonda, mlarotonda
 - Tomas Mallo, tomasmallo22
 - Guillermo Germán Speicher Mujica Clemens, ggspeicher
