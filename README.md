@@ -18,6 +18,8 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 
 # Listado de participantes
 
+=======
+
 - Ezequiel Venuti / eZeKiel9222
 - Federico Ali Barroso, BFedeAli
 - Daniel Guzman, dguzman-ort
@@ -25,6 +27,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Mateo Chancalay, mchancalay
 - Romina Diaz, rominaADiaz
 - Mauricio La Rotonda, mlarotonda
+- Matias Aratano, matiasaratano
 - Tomas Mallo, tomasmallo22
 - Guillermo Germán Speicher Mujica Clemens, ggspeicher
 - Nicolas Lell, NicolasLell
