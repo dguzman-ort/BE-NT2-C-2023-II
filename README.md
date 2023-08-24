@@ -18,6 +18,7 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 
 # Listado de participantes
 
+- Nicolas Giudice, nicogiu
 - Ezequiel Venuti / eZeKiel9222
 - Federico Ali Barroso, BFedeAli
 - Daniel Guzman, dguzman-ort
@@ -25,3 +26,10 @@ Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la 
 - Mateo Chancalay, mchancalay
 - Mauricio La Rotonda, mlarotonda
 - Franco Di Iorio, francodiiorio
+- Romina Diaz, rominaADiaz
+- Mauricio La Rotonda, mlarotonda
+- Matias Aratano, matiasaratano
+- Tomas Mallo, tomasmallo22
+- Guillermo Germán Speicher Mujica Clemens, ggspeicher
+- Nicolas Lell, NicolasLell
+- Felipe Bianco @fbianco32
