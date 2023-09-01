@@ -2,6 +2,10 @@
 
 Repositorio de la clase de NT2 C para el 2023-II
 
+## Drive de la clase:
+
+- [(https://drive.google.com/drive/u/1/folders/1Ewt7dKXbvmwrt5WM7frIlrVHak3E5tiV), https://drive.google.com/drive/u/1/folders/1Ewt7dKXbvmwrt5WM7frIlrVHak3E5tiV]
+
 # Consigna
 
 Para iniciar el proyecto vamos crearnos una cuenta en github. A continuacion la siguiente consiga:
