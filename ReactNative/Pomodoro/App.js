@@ -1,13 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import Cronometro from './components/Cronometro';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GlobalContext, { defaultValue } from './components/globals/GlobalContext';
 
 export default function App() {
 
   const [isRunning, setisRunning] = useState(defaultValue)
   const [isWorking, setIsWorking] = useState(true)
+
+  const [shouldReset, setShouldReset] = useState(false)
+
+
+
+  const reset = () => {
+    setisRunning(defaultValue)
+    setShouldReset(true)
+  }
+
+  useEffect(() => {
+    if (isRunning){
+      setShouldReset(false)
+    }
+  }, [isRunning])
 
 
   return (
@@ -20,6 +35,7 @@ export default function App() {
       <GlobalContext.Provider value={{
         isRunning,
         isWorking,
+        shouldReset,
         setIsWorking
       }}>
         <Cronometro />
@@ -33,7 +49,8 @@ export default function App() {
           onPress={() => setisRunning(!isRunning)}
         />
         <Button
-          title='Reiniciar'          
+          title='Reiniciar'
+          onPress={reset}
         />
       </View>
 

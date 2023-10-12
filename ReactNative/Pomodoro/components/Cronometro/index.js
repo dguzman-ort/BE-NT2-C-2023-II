@@ -13,7 +13,7 @@ let idInterval
 
 export default () => {
   
-  const { isRunning, isWorking, setIsWorking } = useContext(GlobalContext)
+  const { isRunning, isWorking, setIsWorking, shouldReset } = useContext(GlobalContext)
 
   const { DEFAULT_BREAK_MINS, DEFAULT_WORK_MINS} = defaultTime
 
@@ -25,7 +25,6 @@ export default () => {
   useEffect(() => {
 
     if (Math.floor(remainingTime) === 0){
-      console.log("Aqui tengo que cambiar el estado isWorking, y hacer que el cel vibre");
       vibrate()
       setRemainingTime((isWorking) ? minToSec(DEFAULT_BREAK_MINS): minToSec(DEFAULT_WORK_MINS))
 
@@ -37,7 +36,6 @@ export default () => {
 
 
   useEffect(() => {
-    console.log("Aqui iniciamos o pausamos nuestro cronometro");
     if (isRunning){
       // hay que detenerlo
       clearInterval(idInterval)
@@ -47,6 +45,12 @@ export default () => {
       }, 1000);
     }
   }, [isRunning])
+
+  useEffect(() => {
+    if (shouldReset){
+      setRemainingTime((isWorking) ? minToSec(DEFAULT_WORK_MINS) : minToSec(DEFAULT_BREAK_MINS))
+    }
+  }, [shouldReset])
 
   return (
     <View>
