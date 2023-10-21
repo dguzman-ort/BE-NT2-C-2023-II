@@ -1,41 +1,76 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import ContactService from "./services/contacts";
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Contact from './components/Contact';
 import ContactScrollView from './components/ContactScrollView';
+import ContactFlatList from './components/ContactFlatList';
+import ContactSectionList from './components/ContactSectionList';
+import FormContact from './components/FormContact';
+import GlobalContext, { defaultShowForm } from './services/GlobalContext';
 
 
 export default function App() {
 
   const [contacts, setContacts] = useState([])
+  const [showForm, setShowForm] = useState(defaultShowForm)
 
   useEffect(() => {
     console.log("Aqui lo levanto la primera vez...")
     ContactService.getContacts()
-    .then( data => setContacts(data))
+      .then(data => setContacts(data))
+
+    // ContactService.getContactsGroupByLetter()
+    //   .then(data => setContacts(data))
   }, [])
-  
-  
 
+
+  console.log(showForm)
   return (
-    <SafeAreaView>      
-      <View>
+    <GlobalContext.Provider value={{ setShowForm }} >
+      <SafeAreaView>
+        {
+          showForm ?
+            <FormContact />
+            :
+            <>
+              <View style={styles.titleContainer}>
+                <Text style={styles.title}> Listado de Contacto</Text>
+              </View>
+              <View>
+                <Button
+                  title='Agregar Contacto'
+                  onPress={() => setShowForm(true)}
+                />
+              </View>
+              <View>
 
-        <ContactScrollView contacts={contacts} />
+                {/* Ejemplo con ScrollView */}
+                {/* <ContactScrollView contacts={contacts} /> */}
 
-        <StatusBar style="auto" />
-      </View>
-    </SafeAreaView>
+                {/* Ejemplo performante con FlatList */}
+                <ContactFlatList contacts={contacts} />
+
+                {/* Ejemplo con Section List (ojo que cambia el formato de la data necesitada) */}
+                {/* <ContactSectionList contactsByLetter={contacts} /> */}
+                <StatusBar style="auto" />
+              </View>
+            </>
+
+        }
+
+      </SafeAreaView>
+    </GlobalContext.Provider>
 
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  titleContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  title: {
+    fontSize: 30
+  }
+});
