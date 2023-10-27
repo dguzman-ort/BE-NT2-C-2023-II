@@ -1,8 +1,8 @@
-import { FlatList } from "react-native"
+import { FlatList, TouchableOpacity } from "react-native"
 import Contact from "../Contact"
 
 
-export default ({ contacts }) => {
+export default ({ contacts, navigation }) => {
 
   const renderContact = (param) => {
 
@@ -10,7 +10,13 @@ export default ({ contacts }) => {
 
     const { item } = param
     return (
-      <Contact contact={item} />
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Details", {id: item.id})}
+        // onLongPress={() => console.log("hago click intenso")}
+      >
+        <Contact contact={item} />
+      </TouchableOpacity>
+      
     )
   }
 

@@ -2,6 +2,7 @@ import { Card } from '@rneui/themed';
 import { View, Image, Text } from 'react-native';
 
 export default ({ contact }) => {
+  console.log(contact)
   return (
     <View>
       <Card containerStyle={{}} wrapperStyle={{}}>

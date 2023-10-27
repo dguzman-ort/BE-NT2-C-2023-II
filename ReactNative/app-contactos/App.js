@@ -1,66 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import ContactService from "./services/contacts";
 import { Fragment, useEffect, useState } from 'react';
-import Contact from './components/Contact';
-import ContactScrollView from './components/ContactScrollView';
-import ContactFlatList from './components/ContactFlatList';
-import ContactSectionList from './components/ContactSectionList';
-import FormContact from './components/FormContact';
-import GlobalContext, { defaultShowForm } from './services/GlobalContext';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Details from './screens/Details';
+import Home from './screens/Home';
+import FormContact from './screens/FormContact';
+
+
 
 
 export default function App() {
 
-  const [contacts, setContacts] = useState([])
-  const [showForm, setShowForm] = useState(defaultShowForm)
-
-  useEffect(() => {
-    console.log("Aqui lo levanto la primera vez...")
-    ContactService.getContacts()
-      .then(data => setContacts(data))
-
-    // ContactService.getContactsGroupByLetter()
-    //   .then(data => setContacts(data))
-  }, [])
-
-
-  console.log(showForm)
+  const StackNavigator = createNativeStackNavigator()
   return (
-    <GlobalContext.Provider value={{ setShowForm }} >
-      <SafeAreaView>
-        {
-          showForm ?
-            <FormContact />
-            :
-            <>
-              <View style={styles.titleContainer}>
-                <Text style={styles.title}> Listado de Contacto</Text>
-              </View>
-              <View>
-                <Button
-                  title='Agregar Contacto'
-                  onPress={() => setShowForm(true)}
-                />
-              </View>
-              <View>
-
-                {/* Ejemplo con ScrollView */}
-                {/* <ContactScrollView contacts={contacts} /> */}
-
-                {/* Ejemplo performante con FlatList */}
-                <ContactFlatList contacts={contacts} />
-
-                {/* Ejemplo con Section List (ojo que cambia el formato de la data necesitada) */}
-                {/* <ContactSectionList contactsByLetter={contacts} /> */}
-                <StatusBar style="auto" />
-              </View>
-            </>
-
-        }
-
-      </SafeAreaView>
-    </GlobalContext.Provider>
+    
+    <NavigationContainer>
+      <StackNavigator.Navigator>
+        <StackNavigator.Screen name='Home' component={Home} options={
+          { 
+            title: 'Contactos', 
+            headerShown: false
+          }
+        } />
+        <StackNavigator.Screen name='Details' component={Details} />        
+        <StackNavigator.Screen name='Add Contact' component={FormContact} options={
+          { 
+            headerBackVisible: false
+          }
+        } />
+      </StackNavigator.Navigator>
+      
+      
+    </NavigationContainer>
+    
 
   );
 }

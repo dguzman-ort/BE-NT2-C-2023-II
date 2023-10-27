@@ -7,12 +7,10 @@ import GlobalContext from '../../services/GlobalContext';
 
 import ContactService from "../../services/contacts";
 
-export default FormContact = () => {
+export default FormContact = ({ navigation }) => {
 
   const [contact, setContact] = useState({})
   const [formError, setFormError] = useState({})
-
-  const { setShowForm } = useContext(GlobalContext)
 
   const saveContact = () => {
     if (!contact.fullName){
@@ -21,7 +19,7 @@ export default FormContact = () => {
     }
 
     //let regex = /[2-9]{1}\d{2}\./i; // pending... 
-    if (!contact.age || regex.test(contact.age)){
+    if (!contact.age){
       setFormError({...formError, age: true})      
       return
     }
@@ -33,7 +31,9 @@ export default FormContact = () => {
     ContactService.saveContact(contact)
     .then(res => {
       if (res){
-        setShowForm(false)
+        //setShowForm(false)
+        navigation.navigate('Home')
+        // navigation.goBack()
       }
     })
 
@@ -44,9 +44,9 @@ export default FormContact = () => {
 
   return (
     <SafeAreaView>
-      <View style={{alignItems: 'center', marginBottom: 25}}>
+      {/* <View style={{alignItems: 'center', marginBottom: 25}}>
         <Text style={{ fontSize: 25 }}>Formulario de Contacto</Text>
-      </View>
+      </View> */}
       <View>
         {/* <Text>Nombre Completo</Text> */}
         <Input
@@ -89,7 +89,7 @@ export default FormContact = () => {
          />
          <Button
           title="Cancelar"
-          onPress={() => setShowForm(false)}
+          onPress={() => navigation.goBack()}
          />
       </View>
     </SafeAreaView>

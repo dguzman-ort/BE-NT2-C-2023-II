@@ -24,7 +24,12 @@ const crearContacto = () => {
 
 const contactos = Array.from({
   length: MAX_ELEMENTS
-}, crearContacto)
+}, crearContacto).map((item, index) => {
+  return {
+    ...item, 
+    id: index
+  }
+})
 
 const groupByLetter = contactos.reduce((grupo, contacto) => {
   
@@ -75,8 +80,21 @@ const saveContact = (contact) => {
   })
 }
 
+const getContact = (id) => {
+  //se supone que hace una llamada al back pasandole un ID 
+
+  return new Promise((resolve, reject) => {
+    const contact = contactos.find(item => item.id === id)
+    return resolve(contact)
+  })
+}
+
+
+
+
 export default {
   getContacts,
   getContactsGroupByLetter,
-  saveContact
+  saveContact,
+  getContact
 };
