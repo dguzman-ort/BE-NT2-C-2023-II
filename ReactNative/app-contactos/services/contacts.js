@@ -1,3 +1,5 @@
+const BASE_URL = "https://us-central1-api-nt2-ejemplo.cloudfunctions.net/app/api"
+
 const MAX_ELEMENTS = 10
 
 const nombres = ['Carlos', 'Paula', 'Lionel', 'Elena', 'Mateo', `Enzo`]
@@ -6,19 +8,19 @@ const apellidos = ['Messi', 'Perez', 'Romero', 'Gomez', 'Di Maria', `Martinez`]
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 
-const generaNombre = () => `${nombres[random(0, nombres.length -1 )]}`
-const generaApellido = () => `${apellidos[random(0, apellidos.length -1 )]}`
+const generaNombre = () => `${nombres[random(0, nombres.length - 1)]}`
+const generaApellido = () => `${apellidos[random(0, apellidos.length - 1)]}`
 
 
 //Telefono seria: 55-555-555
-const generarTelefono = () => `${random(10,99)}-${random(100,999)}-${random(100,999)}`
+const generarTelefono = () => `${random(10, 99)}-${random(100, 999)}-${random(100, 999)}`
 
 const crearContacto = () => {
-    return {
-      fullName: `${generaApellido()}, ${generaNombre()}`,
-      phone: generarTelefono(),
-      age: random(18, 99)
-    }
+  return {
+    fullName: `${generaApellido()}, ${generaNombre()}`,
+    phone: generarTelefono(),
+    age: random(18, 99)
+  }
 }
 
 
@@ -26,13 +28,13 @@ const contactos = Array.from({
   length: MAX_ELEMENTS
 }, crearContacto).map((item, index) => {
   return {
-    ...item, 
+    ...item,
     id: index
   }
 })
 
 const groupByLetter = contactos.reduce((grupo, contacto) => {
-  
+
   //console.log(contacto, contacto.fullName[0])
 
   const letra = contacto.fullName[0]
@@ -45,24 +47,31 @@ const groupByLetter = contactos.reduce((grupo, contacto) => {
     //[...(grupo[letra])] => Hago un spreed del array supuestamente existente en grupo[letra] 
     // Si no existe algo en grupo[letra], es decir NO hay array aun, se lo creo
     // utilizando el operador || []. 
-    [letra]: [...(grupo[letra] || [] ), contacto]
+    [letra]: [...(grupo[letra] || []), contacto]
   }
 
 }, {})
 
 const getContacts = () => {
 
-  
+
 
   // Se supone que hace una llamada al back para traer contactos...
   return new Promise((resolve, reject) => {
-    return resolve(contactos)
+    fetch(`${BASE_URL}/read`)
+      .then(res => {
+        if (res.status === 200) {
+          return resolve(res.json())
+        } else {
+          return reject("Error: Not found")
+        }
+      })
   })
 }
 
 const getContactsGroupByLetter = () => {
 
-  
+
 
   // Se supone que hace una llamada al back para traer contactos...
   return new Promise((resolve, reject) => {
@@ -75,8 +84,15 @@ const saveContact = (contact) => {
   // para que lo guarde en la lista
 
   return new Promise((resolve, reject) => {
-    contactos.push(contact)
-    return resolve(contact)
+    fetch(`${BASE_URL}/create`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(contact)
+    })
+      .then(res => resolve(res.json()))
+      .catch(err => reject(err))
   })
 }
 
@@ -84,8 +100,14 @@ const getContact = (id) => {
   //se supone que hace una llamada al back pasandole un ID 
 
   return new Promise((resolve, reject) => {
-    const contact = contactos.find(item => item.id === id)
-    return resolve(contact)
+    fetch(`${BASE_URL}/read/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          return resolve(res.json())
+        } else {
+          return reject("Error: Not found")
+        }
+      })
   })
 }
 

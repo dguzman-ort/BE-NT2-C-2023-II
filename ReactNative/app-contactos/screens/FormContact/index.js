@@ -36,6 +36,7 @@ export default FormContact = ({ navigation }) => {
         // navigation.goBack()
       }
     })
+    .catch(err => console.error(err))
 
     
 
